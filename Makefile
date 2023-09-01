@@ -128,8 +128,8 @@ ifeq ($(platform), emscripten)
 	EXT       ?= bc
 	TARGET := $(TARGET_NAME)_libretro_$(platform).$(EXT)
 	FORCE_GLES := 1
-	WITH_DYNAREC=
-	HAVE_GENERIC_JIT = 0
+	WITH_DYNAREC = x86
+	HAVE_GENERIC_JIT = 1
 	CPUFLAGS += -Dasm=asmerror -D__asm__=asmerror -DNO_ASM -DNOSSE
 	SINGLE_THREAD := 1
 	PLATCFLAGS += -Drglgen_resolve_symbols_custom=reicast_rglgen_resolve_symbols_custom \
