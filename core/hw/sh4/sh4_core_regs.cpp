@@ -136,6 +136,8 @@ static void setHostRoundingMode()
                 :
                 : "r"(off_mask), "r"(on_mask)
             );
+#elif defined(__EMSCRIPTEN__)
+    ; //TODO need to find how to make it in emscripten
 #else
 	#error "SetFloatStatusReg: Unsupported platform"
 #endif

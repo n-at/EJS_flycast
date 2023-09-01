@@ -214,7 +214,7 @@ static void context_segfault(host_context_t* reictx, void* segfault_ctx, bool to
 #elif HOST_CPU == CPU_ARM64
 	bicopy(reictx->pc, MCTX(.pc), to_segfault);
 	bicopy(reictx->x2, MCTX(.regs[2]), to_segfault);
-#elif HOST_CPU == CPU_X86
+#elif (HOST_CPU == CPU_X86) || defined(__EMSCRIPTEN__)
 #ifdef __linux__
    bicopy(reictx->pc, MCTX(.gregs[REG_EIP]), to_segfault);
    bicopy(reictx->esp, MCTX(.gregs[REG_ESP]), to_segfault);

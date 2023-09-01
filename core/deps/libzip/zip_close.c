@@ -663,9 +663,10 @@ _zip_create_temp_output(struct zip *za, FILE **outp)
     
     if ((tfp=fdopen(tfd, "r+b")) == NULL) {
 	_zip_error_set(&za->error, ZIP_ER_TMPOPEN, errno);
-	close(tfd);
-	remove(temp);
-	free(temp);
+	//TODO memleak :(
+	//close(tfd);
+	//remove(temp);
+	//free(temp);
 	return NULL;
     }
 

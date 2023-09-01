@@ -24,7 +24,7 @@
 
 #if FEAT_SHREC != DYNAREC_NONE
 
-u8 SH4_TCB[CODE_SIZE + TEMP_CODE_SIZE + 4096]
+u8 SH4_TCB[CODE_SIZE + TEMP_CODE_SIZE + 4096];
 #if defined(_WIN32) || FEAT_SHREC != DYNAREC_JIT
 	;
 #elif defined(__linux__) || defined(__HAIKU__) || \
@@ -33,6 +33,8 @@ u8 SH4_TCB[CODE_SIZE + TEMP_CODE_SIZE + 4096]
 	__attribute__((section(".text")));
 #elif defined(__MACH__)
 	__attribute__((section("__TEXT,.text")));
+#elif defined(__EMSCRIPTEN__)
+	;
 #else
 	#error SH4_TCB ALLOC
 #endif

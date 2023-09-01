@@ -59,15 +59,12 @@ _zip_mkstemp(char *path)
 	int fd;   
 	char *start, *trv;
 	struct stat sbuf;
-	pid_t pid;
 
 	/* To guarantee multiple calls generate unique names even if
 	   the file is not created. 676 different possibilities with 7
 	   or more X's, 26 with 6 or less. */
 	static char xtra[2] = "aa";
 	int xcnt = 0;
-
-	pid = getpid();
 
 	/* Move to end of path and count trailing X's. */
 	for (trv = path; *trv; ++trv)
@@ -84,8 +81,8 @@ _zip_mkstemp(char *path)
 
 	/* Set remaining X's to pid digits with 0's to the left. */
 	while (*--trv == 'X') {
-		*trv = (pid % 10) + '0';
-		pid /= 10;
+	    //TODO getpid() not available in emscripten
+		*trv = '0';
 	}
 
 	/* update xtra for next call. */

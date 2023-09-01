@@ -271,7 +271,8 @@ const GLubyte* rglGetString(GLenum name)
    log_cb(RETRO_LOG_INFO, "glGetString.\n");
 #endif
 #if defined(HAVE_OPENGL) || defined(HAVE_OPENGLES)
-   glGetString(name);
+    //TODO fix for emscripten
+   return glGetString(name);
 #endif
 }
 
