@@ -235,13 +235,13 @@ struct /*__declspec(dllexport)*/  x86_ptr_imm
 	{
 		this->ptr= reinterpret_cast<void*>(ptr);
 	}
-#endif
-
+#else
     template<typename Rv, typename ...Args>
     x86_ptr_imm(Rv(DYNACALL * ptr)(Args...))
     {
         this->ptr= reinterpret_cast<void*>(ptr);
     }
+#endif
 #endif
 };
 
