@@ -130,7 +130,6 @@ ifeq ($(platform), emscripten)
 	FORCE_GLES := 1
 	WITH_DYNAREC =
 	HAVE_GENERIC_JIT = 0
-	DYNAREC_USED = 1
 	CPUFLAGS += -Dasm=asmerror -D__asm__=asmerror -DNO_ASM -DNOSSE
 	SINGLE_THREAD := 1
 	PLATCFLAGS += -Drglgen_resolve_symbols_custom=reicast_rglgen_resolve_symbols_custom \

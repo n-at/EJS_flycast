@@ -452,7 +452,8 @@ endif
 SOURCES_CXX += $(CORE_DIR)/core/libretro/libretro.cpp \
 					$(CORE_DIR)/core/libretro/audiostream.cpp \
 					$(CORE_DIR)/core/libretro/common.cpp \
-					$(CORE_DIR)/core/libretro/vmem_utils.cpp
+					$(CORE_DIR)/core/libretro/vmem_utils.cpp \
+					$(CORE_DIR)/core/hw/sh4/dyna/blockmanager.cpp
 
 SOURCES_C += $(LIBRETRO_COMM_DIR)/memmap/memalign.c \
 					$(LIBRETRO_COMM_DIR)/file/file_path.c \
