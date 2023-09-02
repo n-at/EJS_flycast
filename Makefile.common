@@ -441,20 +441,23 @@ ifneq ($(filter $(WITH_DYNAREC), arm64 aarch64),)
 endif
 
 # Dynarec
-ifeq ($(DYNAREC_USED), 1)
+#ifeq ($(DYNAREC_USED), 1)
 SOURCES_CXX += $(CORE_DIR)/core/hw/sh4/dyna/decoder.cpp \
 					$(CORE_DIR)/core/hw/sh4/dyna/driver.cpp \
 					$(CORE_DIR)/core/hw/sh4/dyna/blockmanager.cpp \
 					$(CORE_DIR)/core/hw/sh4/dyna/shil.cpp \
-					$(CORE_DIR)/core/hw/sh4/dyna/ssa.cpp 
-endif
+					$(CORE_DIR)/core/hw/sh4/dyna/ssa.cpp
+SOURCES_CXX += $(CORE_DIR)/core/rec-x86/rec_x86_asm.cpp \
+						$(CORE_DIR)/core/rec-x86/rec_x86_driver.cpp \
+						$(CORE_DIR)/core/rec-x86/rec_x86_il.cpp \
+						$(CORE_DIR)/core/rec-x86/x86_emitter.cpp
+SOURCES_ASM += $(CORE_DIR)/core/rec-x86/rec_lin86_asm.S
+#endif
 
 SOURCES_CXX += $(CORE_DIR)/core/libretro/libretro.cpp \
 					$(CORE_DIR)/core/libretro/audiostream.cpp \
 					$(CORE_DIR)/core/libretro/common.cpp \
-					$(CORE_DIR)/core/libretro/vmem_utils.cpp \
-					$(CORE_DIR)/core/hw/sh4/dyna/driver.cpp \
-					$(CORE_DIR)/core/hw/sh4/dyna/blockmanager.cpp
+					$(CORE_DIR)/core/libretro/vmem_utils.cpp
 
 SOURCES_C += $(LIBRETRO_COMM_DIR)/memmap/memalign.c \
 					$(LIBRETRO_COMM_DIR)/file/file_path.c \
